@@ -3,6 +3,7 @@
 [![react-native-1d-barcodes releases](https://img.shields.io/badge/Release-0.1.3-blue.svg) ](https://www.github.com/jcleigh/react-native-1d-barcodes/releases)
 
 A React Native component to generate one-dimensional (1D) barcodes.
+(forked from jcleigh/react-native-1d-barcodes 修復Canvas WebView，可設置style，使用方法查看example)
 
 #### Supported 1D barcode types:
 - [x] UPC-A
@@ -11,9 +12,7 @@ A React Native component to generate one-dimensional (1D) barcodes.
 
 ## Installation
 ```sh
-npm i react-native-1d-barcodes --save
- # or
-yarn add react-native-1d-barcodes
+npm i https://github.com/dcuti8/react-native-1d-barcodes --save
 ```
 
 ```jsx
@@ -21,16 +20,21 @@ import React, { Component } from 'react'
 import { View } from 'react-native';
 import { Barcode, Formats } from 'react-native-1d-barcodes';
 
+let ScreenWdith= Dimensions.get("window").width;
+let ScreenHeight= Dimensions.get("window").height;
+
 export default class DisplayBarcode extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Barcode
-            bgColor={'#FFFFFF'}
-            fgColor={'#000000'}
-            format={Formats.UPC_A}
-            value={'01234567890'}
-            width={250}
+         <Barcode
+          bgColor={'rgb(248, 248, 248)'}
+          fgColor={'#000000'}
+          format={Formats.UPC_A}
+          value={'01234567890'}
+          width={ScreenWdith/1.3}
+          height={58}
+          style={{height:58,width:ScreenWdith/1.3}}
         />
       </View>
     );
